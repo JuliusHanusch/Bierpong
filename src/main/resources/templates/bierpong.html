@@ -1,0 +1,34 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>Bierpong Statistiken</title>
+    </head>
+
+    <body>
+        <h1>
+            Bierpong
+        </h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Anzahl Spiele</th>
+                <th>Siege</th>
+                <th>Niederlagen</th>
+            </tr>
+            <tr th:each="p : ${players}">
+                <td th:text="${p.name}"></th>
+                <td th:text="${p.gamesCount}"></th>
+                <td th:text="${p.gamesWon}"></th>
+                <td th:text="${p.gamesLoss}"></th>
+            </tr>  
+
+        </table>
+
+
+        <form action="#" th:action="@{/bierpong/neuerSpieler}">
+            <input type="submit" value="Neuer Spieler">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>Neuen Spieler erstellen</title>
+    </head>
+
+    <body>
+        <h1>
+            Neuen Spieler hinzufügen
+        </h1>
+        <form action="h" th:action="@{/bierpong}" th:object="${form}">
+            <label for="name">Name:</label>
+            <input type="text" name="name" th:field="*{name}" required>
+            <br>
+            <br>
+            <label for="gamesCount">Anzahl bisheriger Spiele:</label>
+            <input type="text" gamesCount="gamesCount" th:field="*{gamesCount}" required>
+            <br>
+            <br>
+            <label for="gamesWon">Anzahl bisheriger Siege:</label>
+            <input type="text" gamesWon="gamesWon" th:field="*{gamesWon}" required>
+            <br>
+            <br>
+            <label for="gamesLoss">Anzahl bisheriger Niederlagen:</label>
+            <input type="text" gamesLoss="gamesLoss" th:field="*{gamesLoss}" required>
+            <br>
+            <br>
+            <input type="submit" value="Spieler erstellen">
+        
+        </form> 
+    </body>
