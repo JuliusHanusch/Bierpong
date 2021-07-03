@@ -18,8 +18,8 @@ public class PlayerManagement {
     public Player createNewPlayer(PlayerForm form){
         if(form == null) throw new NullPointerException();
 
+        playerRepository.save(new Player(form.getName()));
         Player p = playerRepository.findByName(form.getName());
-
         p.setGamesCount(form.getGamesCount());
         p.setGamesWon(form.getGamesWon());
         p.setGamesLoss(form.getGamesLoss());

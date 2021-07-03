@@ -10,7 +10,7 @@
         <h1>
             Neuen Spieler hinzufügen
         </h1>
-        <form action="h" th:action="@{/bierpong}" th:object="${form}">
+        <form role="form" th:action="@{/bierpong}" th:object="${form}">
             <label for="name">Name:</label>
             <input type="text" name="name" th:field="*{name}" required>
             <br>
