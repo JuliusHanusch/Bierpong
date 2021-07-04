@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class PlayerController {
@@ -21,6 +20,8 @@ public class PlayerController {
 
     @GetMapping("/bierpong/neuerSpieler")
     public String showSiteNewPlayer(Model model, PlayerForm form){
+
+        System.out.print("NewPlayer1");
         
         model.addAttribute("form", form);
         return "bierpong_neuerSpieler";
@@ -28,9 +29,11 @@ public class PlayerController {
 
     @PostMapping("/bierpong/neuerSpieler")
     public String handleCreatePlayer(Model model, @ModelAttribute("form") PlayerForm form){
-
+        
+        System.out.print("NewPlayer2");
+        
         playerManagement.createNewPlayer(form);
-        return "bierpong";
+        return "redirect:/bierpong";
     }
     
 

@@ -68,11 +68,5 @@ public class Player {
         this.winrate = winrate;
     }
 
-    public long getId(){
-      return id;
-    }
-
-
-
     
 }

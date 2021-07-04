@@ -24,6 +24,7 @@ public class PlayerManagement {
         p.setGamesWon(form.getGamesWon());
         p.setGamesLoss(form.getGamesLoss());
         p.setWinrate(form.calculateWinrate());
+        System.out.print("Player");
 
         return playerRepository.save(p);
     }
