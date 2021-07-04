@@ -3,6 +3,7 @@
 
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}">
         <title>Bierpong Statistiken</title>
     </head>
 
@@ -10,24 +11,24 @@
         <h1>
             Bierpong
         </h1>
-        <table>
+        <table id="table">
             <tr>
-                <th>Name</th>
-                <th>Anzahl Spiele</th>
-                <th>Siege</th>
-                <th>Niederlagen</th>
+                <th id="th">Name</th>
+                <th id="th">Anzahl Spiele</th>
+                <th id="th">Siege</th>
+                <th id="th">Niederlagen</th>
+                <th id="th">Winrate</th>
             </tr>
             <tr th:each="p : ${players}">
                 <td th:text="${p.name}"></th>
                 <td th:text="${p.gamesCount}"></th>
                 <td th:text="${p.gamesWon}"></th>
                 <td th:text="${p.gamesLoss}"></th>
-                <td th:text="${p.winrate}"></td>
+                <td th:text="${p.calculateWinrate} + '%'"></td>
             </tr>  
 
         </table>
         <br>
-
 
         <form action="#" th:action="@{/bierpong/neuerSpieler}">
             <input type="submit" value="Neuer Spieler">

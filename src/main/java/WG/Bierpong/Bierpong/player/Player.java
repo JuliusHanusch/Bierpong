@@ -60,12 +60,14 @@ public class Player {
     }
 
 
-    public Double getWinrate() {
-        return winrate;
-    }
-
     public void setWinrate(Double winrate) {
         this.winrate = winrate;
+    }
+
+    public Double calculateWinrate() {
+        winrate = ((double) gamesWon/(double) gamesCount);
+        return winrate * 100;
+
     }
 
     

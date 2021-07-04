@@ -32,9 +32,6 @@ public class PlayerForm {
     }
 
     public Double calculateWinrate(){
-        if(gamesCount == 0){
-            return 0.0;
-        }
         return (double) (gamesWon/gamesCount);
     }
     

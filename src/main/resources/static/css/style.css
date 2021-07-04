@@ -1,0 +1,23 @@
+#table{
+    width: 75%;
+    text-align: left;
+    margin: 5vh 0 0 25%;
+
+}
+#tabe td, #table th{
+    width: 500px;
+    border: 1px solid white;
+    padding: 8px;
+}
+
+#table th{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    background-color:crimson;
+    color: white;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
