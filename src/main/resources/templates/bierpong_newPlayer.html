@@ -16,15 +16,15 @@
             <br>
             <br>
             <label for="gamesCount">Current Games</label>
-            <input type="text" gamesCount="gamesCount" th:field="*{gamesCount}" required>
+            <input type="number" gamesCount="gamesCount" min="0" th:field="*{gamesCount}" required>
             <br>
             <br>
             <label for="gamesWon">Current Wins</label>
-            <input type="text" gamesWon="gamesWon" th:field="*{gamesWon}" required>
+            <input type="number" gamesWon="gamesWon" min="0" th:field="*{gamesWon}" required>
             <br>
             <br>
             <label for="gamesLoss">Current Loses</label>
-            <input type="text" gamesLoss="gamesLoss" th:field="*{gamesLoss}" required>
+            <input type="number" gamesLoss="gamesLoss" min="0" th:field="*{gamesLoss}" required>
             <br>
             <br>
             <input type="submit" value="Spieler erstellen">

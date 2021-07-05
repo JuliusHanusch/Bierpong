@@ -51,37 +51,37 @@ public class PlayerController {
         return "bierpong_newGame";
     }
 
-    @PostMapping("/bierpong/increment/{pid}")
-    public String handleWinStats(@PathVariable Long pid){
+    // @PostMapping("/bierpong/increment/{pid}")
+    // public String handleWinStats(@PathVariable Long pid){
 
-        System.out.println("Check");
+    //     System.out.println("Check");
         
-        if (playerRepository.findById(pid).isEmpty()) {
-			return "redirect:/bierpong_newGame";
-		}
-        Player p = playerManagement.getPlayerById(pid);
-        playerManagement.increment(p);
-        playerRepository.save(p);
+    //     if (playerRepository.findById(pid).isEmpty()) {
+	// 		return "redirect:/bierpong_newGame";
+	// 	}
+    //     Player p = playerManagement.getPlayerById(pid);
+    //     playerManagement.increment(p);
+    //     playerRepository.save(p);
 
-        System.out.println("Check1");
+    //     System.out.println("Check1");
 
 
-        return "redirect:/bierpong/newGame";
-    }
+    //     return "redirect:/bierpong/newGame";
+    // }
 
-    @PostMapping("/bierpong/decrement/{pid}")
-    public String handleLoseStats(@PathVariable Long pid){
+    // @PostMapping("/bierpong/decrement/{pid}")
+    // public String handleLoseStats(@PathVariable Long pid){
         
-        if (playerRepository.findById(pid).isEmpty()) {
-			return "redirect:/bierpong_newGame";
-		}
-        Player p = playerManagement.getPlayerById(pid);
-        playerManagement.decrement(p);
-        playerRepository.save(p);
+    //     if (playerRepository.findById(pid).isEmpty()) {
+	// 		return "redirect:/bierpong_newGame";
+	// 	}
+    //     Player p = playerManagement.getPlayerById(pid);
+    //     playerManagement.decrement(p);
+    //     playerRepository.save(p);
 
 
-        return "redirect:/bierpong/newGame";
-    }
+    //     return "redirect:/bierpong/newGame";
+    // }
 
     @PostMapping("/bierpong/newGame")
     public String returnToMainPage(Model model){

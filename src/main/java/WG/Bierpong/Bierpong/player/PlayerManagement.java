@@ -20,11 +20,10 @@ public class PlayerManagement {
 
         playerRepository.save(new Player(form.getName()));
         Player p = playerRepository.findByName(form.getName());
-        p.setGamesCount(form.getGamesCount());
-        p.setGamesWon(form.getGamesWon());
-        p.setGamesLoss(form.getGamesLoss());
-        p.setWinrate(form.calculateWinrate());
-        System.out.print("Player");
+        // p.setGamesCount(form.getGamesCount());
+        // p.setGamesWon(form.getGamesWon());
+        // p.setGamesLoss(form.getGamesLoss());
+        // p.setWinrate(form.calculateWinrate());
 
         return playerRepository.save(p);
     }
@@ -39,13 +38,13 @@ public class PlayerManagement {
         return null;
     }
 
-    public void increment(Player p){
-        p.win();
-    }
+    // public void increment(Player p){
+    //     p.win();
+    // }
 
-    public void decrement(Player p){
-        p.lose();
-    }
+    // public void decrement(Player p){
+    //     p.lose();
+    // }
 
     
 }
