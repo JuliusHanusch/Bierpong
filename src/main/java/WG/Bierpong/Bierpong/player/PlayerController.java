@@ -53,15 +53,20 @@ public class PlayerController {
 
     @PostMapping("/bierpong/increment/{pid}")
     public String handleWinStats(@PathVariable Long pid){
+
+        System.out.println("Check");
         
         if (playerRepository.findById(pid).isEmpty()) {
 			return "redirect:/bierpong_newGame";
 		}
         Player p = playerManagement.getPlayerById(pid);
         playerManagement.increment(p);
+        playerRepository.save(p);
+
+        System.out.println("Check1");
 
 
-        return "redirect:/bierpong_newGame";
+        return "redirect:/bierpong/newGame";
     }
 
     @PostMapping("/bierpong/decrement/{pid}")
@@ -72,9 +77,15 @@ public class PlayerController {
 		}
         Player p = playerManagement.getPlayerById(pid);
         playerManagement.decrement(p);
+        playerRepository.save(p);
 
 
-        return "redirect:/bierpong_newGame";
+        return "redirect:/bierpong/newGame";
+    }
+
+    @PostMapping("/bierpong/newGame")
+    public String returnToMainPage(Model model){
+        return "redirect:/bierpong";
     }
 
 
