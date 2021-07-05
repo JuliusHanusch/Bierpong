@@ -70,5 +70,19 @@ public class Player {
 
     }
 
+    public Long getId(){
+        return id;
+    }
+
+    public void win(){
+        gamesCount++;
+        gamesWon++;
+    }
+
+    public void lose(){
+        gamesCount--;
+        gamesWon--;
+    }
+
     
 }

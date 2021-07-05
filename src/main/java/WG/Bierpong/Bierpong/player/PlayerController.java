@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
 
@@ -11,26 +12,72 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PlayerController {
     
 	private PlayerManagement playerManagement;
-	// private PlayerRepository playerRepository;
+	private PlayerRepository playerRepository;
 
-    public PlayerController(PlayerManagement playerManagement){
+    public PlayerController(PlayerManagement playerManagement, PlayerRepository playerRepository){
         this.playerManagement = playerManagement;
+        this.playerRepository = playerRepository;
     }
 
+    @GetMapping("/bierpong")
+    public String showOverview(Model model){
 
-    @GetMapping("/bierpong/neuerSpieler")
+        model.addAttribute("players", playerManagement.getAllPlayers());
+        return "bierpong";
+    }
+    
+
+
+
+    @GetMapping("/bierpong/newPlayer")
     public String showSiteNewPlayer(Model model, PlayerForm form){
         
         model.addAttribute("form", form);
-        return "bierpong_neuerSpieler";
+        return "bierpong_newPlayer";
     }
 
-    @PostMapping("/bierpong/neuerSpieler")
-    public String handleCreatePlayer(Model model, @ModelAttribute("form") PlayerForm form){
+    @PostMapping("/bierpong/newPlayer")
+    public String handleCreatePlayer(@ModelAttribute("form") PlayerForm form){
                 
         playerManagement.createNewPlayer(form);
         return "redirect:/bierpong";
     }
+
+    
+    @GetMapping("/bierpong/newGame")
+    public String showSiteNewGame(Model model){
+
+        model.addAttribute("players", playerManagement.getAllPlayers());
+        return "bierpong_newGame";
+    }
+
+    @PostMapping("/bierpong/increment/{pid}")
+    public String handleWinStats(@PathVariable Long pid){
+        
+        if (playerRepository.findById(pid).isEmpty()) {
+			return "redirect:/bierpong_newGame";
+		}
+        Player p = playerManagement.getPlayerById(pid);
+        playerManagement.increment(p);
+
+
+        return "redirect:/bierpong_newGame";
+    }
+
+    @PostMapping("/bierpong/decrement/{pid}")
+    public String handleLoseStats(@PathVariable Long pid){
+        
+        if (playerRepository.findById(pid).isEmpty()) {
+			return "redirect:/bierpong_newGame";
+		}
+        Player p = playerManagement.getPlayerById(pid);
+        playerManagement.decrement(p);
+
+
+        return "redirect:/bierpong_newGame";
+    }
+
+
     
 
 

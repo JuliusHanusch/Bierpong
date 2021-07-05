@@ -1,6 +1,8 @@
 package WG.Bierpong.Bierpong.player;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,24 @@ public class PlayerManagement {
         System.out.print("Player");
 
         return playerRepository.save(p);
+    }
+
+    public Player getPlayerById(Long pid){
+        if(pid == null){
+            throw new NullPointerException();
+        }
+        if(playerRepository.findById(pid).isPresent()){
+            return playerRepository.findById(pid).get();
+        }
+        return null;
+    }
+
+    public void increment(Player p){
+        p.win();
+    }
+
+    public void decrement(Player p){
+        p.lose();
     }
 
     

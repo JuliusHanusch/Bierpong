@@ -14,24 +14,30 @@
         <table id="table">
             <tr>
                 <th id="th">Name</th>
-                <th id="th">Anzahl Spiele</th>
-                <th id="th">Siege</th>
-                <th id="th">Niederlagen</th>
+                <th id="th">Total Games</th>
+                <th id="th">Wins</th>
+                <th id="th">Loses</th>
                 <th id="th">Winrate</th>
             </tr>
             <tr th:each="p : ${players}">
-                <td th:text="${p.name}"></th>
-                <td th:text="${p.gamesCount}"></th>
-                <td th:text="${p.gamesWon}"></th>
-                <td th:text="${p.gamesLoss}"></th>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.gamesCount}"></td>
+                <td th:text="${p.gamesWon}"></td>
+                <td th:text="${p.gamesLoss}"></td>
                 <td th:text="${p.calculateWinrate} + '%'"></td>
             </tr>  
 
         </table>
         <br>
+        <br>
 
-        <form action="#" th:action="@{/bierpong/neuerSpieler}">
-            <input type="submit" value="Neuer Spieler">
+        <form action="#" th:action="@{/bierpong/newPlayer}">
+            <input type="submit" value="New PLayer">
+        </form>
+        <br>
+        <br>
+        <form action="#" th:action="@{/bierpong/newGame}">
+            <input type="submit" value="New Game">
         </form>
     </body>
 </html>
