@@ -1,3 +1,44 @@
+
+body{
+    margin:0;
+    padding:0;
+}
+div.m{
+    display:grid;
+    grid-template:"h h h" 100vh ". m ." 1fr/1fr 900px 1fr;
+}
+header.m{
+    position:relative;
+    grid-area:h;
+    background: red;
+}
+header.m .center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+
+main{
+    grid-area:m;
+    background: green;
+    height:50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #table{
     width: 75%;
     text-align: left;
