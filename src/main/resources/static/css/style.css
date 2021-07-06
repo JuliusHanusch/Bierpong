@@ -10,15 +10,23 @@ div.m{
 header.m{
     position:relative;
     grid-area:h;
-    background: red;
+    background: rgb(0, 0, 0);
 }
+header.m .bierpongVid{
+    height: 99%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
 header.m .center{
     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
+    color: yellow;
 }
-
 
 main{
     grid-area:m;
