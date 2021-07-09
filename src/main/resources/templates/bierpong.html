@@ -17,14 +17,50 @@
                 <div class=center>
                     <h1>Beerpongstats</h1>
                     <ul>
-                        <li>Ergebnistabellen
-                        <li>Ergebnisse eintragen
+                        <li><a href=#spielertabelle>Spielertabelle</a></li>
+                        <li><a href=#spieltabelle>Spieltabelle</a></li>
+                        <li><a href=#eintragen>Ergebnisse eintragen</a></li>
                     </ul>
                 </div>
 
             </header>
             
             <main>
+                <table class ="spielertabelle" id=spielertabelle>
+                    <tr>
+                        <th>Name</th>
+                        <th>Total Games</th>
+                        <th>Wins</th>
+                        <th>Loses</th>
+                        <th>Winrate</th>
+                    </tr>
+                    <tr th:each="p : ${players}">
+                        <td th:text="${p.name}"></td>
+                        <td th:text="${p.gamesCount}"></td>
+                        <td th:text="${p.gamesWon}"></td>
+                        <td th:text="${p.gamesLoss}"></td>
+                        <td th:text="${p.calculateWinrate} + '%'"></td>
+                    </tr>  
+                </table>
+
+                <table class ="spieltabelle" id=spieltabelle>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Winners</th>
+                        <th>Losers</th>
+                        <th>Remaining Cups</th>
+                    </tr>
+                    <tr>
+                        <td>27.06.2021</td>
+                        <td>Tobias</td>
+                        <td>Phil, Luis</td>
+                        <td>3</td>
+                    </tr>  
+                </table>
+
+                <section class=eintragen id=eintragen>
+
+                </section>
 
             </main>
 
