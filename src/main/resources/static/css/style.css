@@ -65,21 +65,59 @@ main{
 table.spielertabelle{
     grid-area: spielertab;
     width: 1fr;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-color: black;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+.spielertabelle thead th{
+    background-color: rgb(204, 14, 77);
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+.spielertabelle th, .spielertabelle td{
+    padding: 6px 9px;
+
+}
+.spielertabelle tbody tr{
+    border-bottom: 1px solid lightgray;
+}
+.spielertabelle tbody tr:nth-of-type(even){
+    background-color:  #f3f3f3;
+}
+.spielertabelle tbody tr:last-of-type{
+    border-bottom: 2px solid rgb(204, 14, 77);
 }
 
-table.spieltabelle tr, table.spieltabelle th, table.spieltabelle td{
-    border: 3px solid black;
-    
-}
 table.spieltabelle{
     grid-area: spieltabelle;
-    background: green;
     width: 1fr;
-    text-align: left;
     border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+.spieltabelle thead th{
+    background-color: rgb(36, 163, 121);
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+.spieltabelle th, .spieltabelle td{
+    padding: 6px 9px;
+
+}
+.spieltabelle tbody tr{
+    border-bottom: 1px solid lightgray;
+}
+.spieltabelle tbody tr:nth-of-type(even){
+    background-color:  #f3f3f3;
+}
+.spieltabelle tbody tr:last-of-type{
+    border-bottom: 2px solid rgb(36, 163, 121);
 }
 
 section.eintragen{
@@ -88,7 +126,6 @@ section.eintragen{
     width: 1fr;
     height: 500px;
 }
-
 
 
 
