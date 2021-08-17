@@ -40,14 +40,15 @@
                     <tbody>
                         <tr th:each="p : ${players}">
                             <td th:text="${p.name}"></td>
-                            <td th:text="${p.gamesCount}"></td>
-                            <td th:text="${p.gamesWon}"></td>
-                            <td th:text="${p.gamesLoss}"></td>
+                            <td th:text="${p.calculateGamesCount()}"></td>
+                            <td th:text="${p.calculateGamesWon()}"></td>
+                            <td th:text="${p.calculateGamesLose()}"></td>
                             <td th:text="${p.calculateWinrate} + '%'"></td>
                         </tr>  
                     </tbody>
                     
                 </table>
+
 
                 <table class ="spieltabelle" id=spieltabelle>
                     <thead>
@@ -76,6 +77,30 @@
                 </table>
 
                 <section class=eintragen id=eintragen>
+                    <form th:action="@{/bierpong/newPlayer}" th:object="${playerForm}" method="POST">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" th:field="*{name}" required>
+                        <br>
+                        <input type="submit" value="Create player">
+                    
+                    </form> 
+                    <form th:action="@{/bierpong/newGame}" th:object="${gameForm}" method="POST">
+
+                        <label for="winner">Winner:</label>
+                        <br>
+                        <input th:each="p : ${players}" type="checkbox" name="winner[]" th:field="*{winner}" th:text=${p.name} th:value=${p.id}>
+                        <br>    
+                        <label for="loser">Loser:</label>
+                        <br>
+                        <input th:each="p : ${players}" type="checkbox" name="loser[]" th:field="*{loser}" th:text=${p.name} th:value=${p.id}>
+                        <br>
+                        <label for="remainingCups">Remaining Cups:</label>
+                        <br>
+                        <input type="number" name="remainingCups" th:field="*{remainingCups}" required>
+                        <br>           
+                        <input type="submit" value="Add new Game">
+                    
+                    </form> 
 
                 </section>
 
@@ -84,6 +109,9 @@
         </div>
 
 
+    <form action="#" th:action="@{/bierpong/newGame}">
+        <input type="submit" value="New Game">
+    </form>
 
 
 
@@ -92,37 +120,7 @@
 
 
 
-        <h1>
-            Bierpong
-        </h1>
-        
-        <table id="table">
-            <tr>
-                <th id="th">Name</th>
-                <th id="th">Total Games</th>
-                <th id="th">Wins</th>
-                <th id="th">Loses</th>
-                <th id="th">Winrate</th>
-            </tr>
-            <tr th:each="p : ${players}">
-                <td th:text="${p.name}"></td>
-                <td th:text="${p.gamesCount}"></td>
-                <td th:text="${p.gamesWon}"></td>
-                <td th:text="${p.gamesLoss}"></td>
-                <td th:text="${p.calculateWinrate} + '%'"></td>
-            </tr>  
 
-        </table>
-        <br>
-        <br>
 
-        <form action="#" th:action="@{/bierpong/newPlayer}">
-            <input type="submit" value="New PLayer">
-        </form>
-        <br>
-        <br>
-        <form action="#" th:action="@{/bierpong/newGame}">
-            <input type="submit" value="New Game">
-        </form>
     </body>
 </html>
