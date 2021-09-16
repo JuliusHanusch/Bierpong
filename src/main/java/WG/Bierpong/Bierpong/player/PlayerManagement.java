@@ -4,6 +4,8 @@ package WG.Bierpong.Bierpong.player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import WG.Bierpong.Bierpong.game.Game;
+
 @Service
 public class PlayerManagement {
 
@@ -36,6 +38,11 @@ public class PlayerManagement {
             return playerRepository.findById(pid).get();
         }
         return null;
+    }
+
+    public void addGameToPlayer(Player p, Game g){
+        p.addGame(g);
+        playerRepository.save(p);
     }
 
     // public void increment(Player p){

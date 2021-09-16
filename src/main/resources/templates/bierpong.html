@@ -60,18 +60,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>27.06.2021</td>
-                            <td>Tobias</td>
-                            <td>Phil, Luis</td>
-                            <td>3</td>
-                        </tr>  
-                        <tr>
-                            <td>28.06.2021</td>
-                            <td>Tobias</td>
-                            <td>Phil, Luis</td>
-                            <td>3</td>
-                        </tr>  
+                        <tr th:each="g : ${games}">
+                            <td th:text="${g.date}"></td>
+                            <td th:text="${g.getAllWinnerNames()}"></td>
+                            <td th:text="${g.getAllLoserNames()}"></td>
+                            <td th:text="${g.remainingCups}"></td>
+                        </tr> 
                     </tbody>
                     
                 </table>
@@ -84,15 +78,17 @@
                         <input type="submit" value="Create player">
                     
                     </form> 
-                    <form th:action="@{/bierpong/newGame}" th:object="${gameForm}" method="POST">
 
-                        <label for="winner">Winner:</label>
+                    <form action='#' th:action="@{/bierpong/newGame}" th:object="${gameForm}" method="POST">
+
+                        <label for="winner">Select winner:</label>
                         <br>
-                        <input th:each="p : ${players}" type="checkbox" name="winner[]" th:field="*{winner}" th:text=${p.name} th:value=${p.id}>
+                        <!-- <input type="hidden" name="winner" value="no" -->
+                        <input th:each="p : ${players}" type="checkbox" th:field="*{winner}" th:text=${p.name} th:value=${p.name} >
                         <br>    
-                        <label for="loser">Loser:</label>
+                        <label for="loser">Select loser:</label>
                         <br>
-                        <input th:each="p : ${players}" type="checkbox" name="loser[]" th:field="*{loser}" th:text=${p.name} th:value=${p.id}>
+                        <input th:each="p : ${players}" type="checkbox" th:field="*{loser}" th:text=${p.name} th:value=${p.name}>
                         <br>
                         <label for="remainingCups">Remaining Cups:</label>
                         <br>
@@ -107,18 +103,6 @@
             </main>
 
         </div>
-
-
-    <form action="#" th:action="@{/bierpong/newGame}">
-        <input type="submit" value="New Game">
-    </form>
-
-
-
-
-
-
-
 
 
 

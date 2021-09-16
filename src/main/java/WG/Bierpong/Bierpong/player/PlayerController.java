@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import WG.Bierpong.Bierpong.game.GameForm;
 import WG.Bierpong.Bierpong.game.GameManagement;
-import WG.Bierpong.Bierpong.game.GameRepository;
 
 @Controller
 public class PlayerController {
@@ -27,6 +26,7 @@ public class PlayerController {
     public String showOverview(Model model, PlayerForm playerForm, GameForm gameForm){
 
         model.addAttribute("players", playerManagement.getAllPlayers());
+        model.addAttribute("games", gameManagement.getAllGames());
         model.addAttribute("playerForm", playerForm);
         model.addAttribute("gameForm", gameForm);
         return "bierpong";
@@ -44,7 +44,11 @@ public class PlayerController {
     public String handleNewGame(@ModelAttribute("form") GameForm gameForm){
         if(gameForm == null) throw new NullPointerException();
 
+        System.out.println(gameForm.getWinner());
+        System.out.println(gameForm.getLoser());
+
         gameManagement.createNewGame(gameForm);
+        System.out.println("Check5");
         return "redirect:/bierpong";
     }
     

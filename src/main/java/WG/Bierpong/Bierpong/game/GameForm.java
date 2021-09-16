@@ -2,37 +2,53 @@ package WG.Bierpong.Bierpong.game;
 
 import java.util.*;
 
-import WG.Bierpong.Bierpong.player.Player;
-
 
 public class GameForm {
+    
     private Date date;
-    private List<Player> winner;
-    private List<Player> loser;
+    private List<String> winner;
+    private List<String> loser;
     private Integer remainingCups;
 
-    public GameForm(List<Player> Winner, List<Player> Loser, Integer remainingCups){     
+    public GameForm(List<String> winner, List<String> loser, Integer remainingCups){     
         date = new Date();
         this.winner = winner;
         this.loser = loser;
         this.remainingCups = remainingCups;
     }
 
+
     public Date getDate() {
         return date;
     }
 
-    public List<Player> getWinner() {
+    public List<String> getWinner() {
         return winner;
     }
 
-    public List<Player> getLoser() {
+    public List<String> getLoser() {
         return loser;
     }
 
     public Integer getRemainingCups() {
         return remainingCups;
     }
-    
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setWinner(List<String> winner) {
+        this.winner = winner;
+    }
+
+    public void setLoser(List<String> loser) {
+        this.loser = loser;
+    }
+
+    public void setRemainingCups(Integer remainingCups) {
+        this.remainingCups = remainingCups;
+    }
+   
     
 }

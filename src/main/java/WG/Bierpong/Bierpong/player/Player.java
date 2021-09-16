@@ -6,8 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import WG.Bierpong.Bierpong.game.Game;
-import net.bytebuddy.asm.Advice.Return;
-
 import java.util.*;
 
 @Entity
