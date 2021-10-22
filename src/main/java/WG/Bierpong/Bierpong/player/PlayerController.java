@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
 
 import WG.Bierpong.Bierpong.game.GameForm;
+import WG.Bierpong.Bierpong.game.Game;
 import WG.Bierpong.Bierpong.game.GameManagement;
 
 @Controller

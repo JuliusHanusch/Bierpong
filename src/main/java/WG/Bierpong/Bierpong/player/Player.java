@@ -12,8 +12,11 @@ import java.util.*;
 public class Player {
     private String name;
 
-    @OneToMany
+/*     @OneToMany
     private List<Game> games;
+ */
+    private Integer gamesWon;
+    private Integer gamesLoss;
 
     private @Id @GeneratedValue Long id;
 
@@ -38,63 +41,97 @@ public class Player {
     public Long getId(){
         return id;
     }
+    public Integer getGamesWon() {
+        return gamesWon;
+    }
 
+    public void setGamesWon(Integer gamesWon) {
+        this.gamesWon = gamesWon;
+    }
+
+    public void incrementGamesWon(){
+        gamesWon++;
+    }
+
+
+    public Integer getGamesLoss() {
+         return gamesLoss;
+    }
+
+    public void setGamesLoss(Integer gamesLoss) {
+        this.gamesLoss = gamesLoss;
+    }
+
+    public void incrementGamesLoss(){
+        gamesLoss++;
+        
+    }
     public Integer calculateGamesCount() {
-        if(games == null){
+        return gamesLoss + gamesWon;
+        /* if(games == null){
             return 0;
         }
         return games.size();
-
+ */
     }
 
-    public Integer calculateGamesWon(){
+    /* public Integer calculateGamesWon(){
+        return gamesWon;
         Integer gamesWon = 0;
         if(games == null){
             return gamesWon;
         }
         for(Game g: games){
-            for(Player p: g.getWinner()){
-                if(p.getId().equals(id)){
+            for(String playerName : g.getWinner()){
+                if(playerName.equals(name)){
                     gamesWon++;
                 }
             }
         }
         return gamesWon;
-    }
+    } */
 
-    public Integer calculateGamesLose(){
+   /*  public Integer calculateGamesLose(){
+        return gamesLoss;
+
         Integer gamesLose = 0;
         if(games == null){
             return gamesLose;
         }
         for(Game g: games){
-            for(Player p: g.getLoser()){
-                if(p.getId().equals(id)){
+            for(String playerName : g.getLoser()){
+                if(playerName   .equals(name)){
                     gamesLose++;
                 }
             }
         }
         return gamesLose;
-    }
+    } */
 
 
     public Double calculateWinrate(){
         if(calculateGamesCount() == 0){
             return 0.0;
         }
-        return (double) calculateGamesWon() / (double) calculateGamesCount();
+        return (double) gamesWon/((double) calculateGamesCount()) * (double) 100;
+        /* if(calculateGamesCount() == 0){
+            return 0.0;
+        }
+        return (double) calculateGamesWon() / (double) calculateGamesCount() * (double) 100; */
     }
 
 
 
-    public void addGame(Game g){
+    /* public void addGame(Game g){
         if(g == null) throw new NullPointerException();
         if(games == null){
             games = new ArrayList<Game>();
             games.add(g);
+            }
+        else{
+            games.add(g);
         }
-        games.add(g);
-    }
+    } */
 
     
 }
@@ -106,55 +143,3 @@ public class Player {
 
 
 
-
-
-    // public void getGamesCount() {
-    //     return gamesCount;
-    // }
-
-    // public void setGamesCount(Integer gamesCount) {
-    //     this.gamesCount = gamesCount;
-    // }
-
-
-    // public Integer getGamesWon() {
-    //     return gamesWon;
-    // }
-
-    // public void setGamesWon(Integer gamesWon) {
-    //     this.gamesWon = gamesWon;
-    // }
-
-
-    // public Integer getGamesLoss() {
-    //     return gamesLoss;
-    // }
-
-    // public void setGamesLoss(Integer gamesLoss) {
-    //     this.gamesLoss = gamesLoss;
-    // }
-
-
-    // public void setWinrate(Double winrate) {
-    //     this.winrate = winrate;
-    // }
-
-    // public Double calculateWinrate() {
-    //     if(gamesCount == 0){
-    //         return 0.0;
-    //     }
-    //     winrate = ((double) gamesWon/(double) gamesCount);
-    //     return winrate * 100;
-
-    // }
-     
-
-    // public void win(){
-    //     gamesCount++;
-    //     gamesWon++;
-    // }
-
-    // public void lose(){
-    //     gamesCount--;
-    //     gamesWon--;
-    // }

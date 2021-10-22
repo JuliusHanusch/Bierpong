@@ -41,8 +41,8 @@
                         <tr th:each="p : ${players}">
                             <td th:text="${p.name}"></td>
                             <td th:text="${p.calculateGamesCount()}"></td>
-                            <td th:text="${p.calculateGamesWon()}"></td>
-                            <td th:text="${p.calculateGamesLose()}"></td>
+                            <td th:text="${p.gamesWon}"></td>
+                            <td th:text="${p.gamesLoss}"></td>
                             <td th:text="${p.calculateWinrate} + '%'"></td>
                         </tr>  
                     </tbody>

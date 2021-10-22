@@ -22,10 +22,9 @@ public class PlayerManagement {
 
         playerRepository.save(new Player(form.getName()));
         Player p = playerRepository.findByName(form.getName());
-        // p.setGamesCount(0);
-        // p.setGamesWon(form.getGamesWon());
-        // p.setGamesLoss(form.getGamesLoss());
-        // p.setWinrate(form.calculateWinrate());
+        p.setGamesWon(0);
+        p.setGamesLoss(0);
+        System.out.println(p.getId());
 
         return playerRepository.save(p);
     }
@@ -40,18 +39,19 @@ public class PlayerManagement {
         return null;
     }
 
-    public void addGameToPlayer(Player p, Game g){
+    /* public Player addGameToPlayer(Player p, Game g){
         p.addGame(g);
-        playerRepository.save(p);
+        return playerRepository.save(p);
+    } */
+
+    public void addLoseToPlayer(Player p){
+        p.incrementGamesLoss();
+        return;
     }
-
-    // public void increment(Player p){
-    //     p.win();
-    // }
-
-    // public void decrement(Player p){
-    //     p.lose();
-    // }
-
+    public void addWinToPlayer(Player p){
+        p.incrementGamesWon();
+        return;
+    }
+    
     
 }
