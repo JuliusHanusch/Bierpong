@@ -7,10 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 
-import WG.Bierpong.Bierpong.player.Player;
 
 @Entity
 public class Game {

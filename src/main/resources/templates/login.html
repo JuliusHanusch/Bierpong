@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+        <title>Bierpong Statistiken</title>
+    </head>
+
+    <body>
+        <h1>Login</h1>
+
+        <form name="login" th:action="@{/login}" method="post">
+        
+            <div th:if="${param.error}" class="alert alert-error">
+                Invalid username and password
+            </div>
+            <div th:if="${param.logout}" class="alert-success">
+                You have been logged out
+            </div>
+
+                <label for="username">Username</label>
+                <br>
+                <input type="text" id="username" name="username"/> <br/>
+            
+    
+                <label for="password">Password</label>
+                <br>
+                <input type="password" id="password" name="password"/> <br/>
+                             
+                <input type="submit" value="Login">
+            
+        </form>
+            
+    </body>
+</html>

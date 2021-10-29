@@ -1,6 +1,7 @@
 package WG.Bierpong.Bierpong.player;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
 
 import WG.Bierpong.Bierpong.game.GameForm;
-import WG.Bierpong.Bierpong.game.Game;
 import WG.Bierpong.Bierpong.game.GameManagement;
 
 @Controller
@@ -23,6 +23,7 @@ public class PlayerController {
 
   
 
+    @PreAuthorize("hasRole('ADMIN')" + "hasRole('USER)")
     @GetMapping("/bierpong")
     public String showOverview(Model model, PlayerForm playerForm, GameForm gameForm){
 
@@ -33,6 +34,8 @@ public class PlayerController {
         return "bierpong";
     }
 
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/bierpong/newPlayer")
     public String handleNewPlayer(@ModelAttribute("form") PlayerForm playerForm){
         if(playerForm == null) throw new NullPointerException();
@@ -41,6 +44,8 @@ public class PlayerController {
         return "redirect:/bierpong";
     }
 
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/bierpong/newGame")
     public String handleNewGame(@ModelAttribute("form") GameForm gameForm){
         if(gameForm == null) throw new NullPointerException();
