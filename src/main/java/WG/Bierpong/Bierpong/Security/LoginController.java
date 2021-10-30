@@ -20,7 +20,7 @@ public class LoginController {
     public String handleLogin(){
 
         
-        return "bierpong";
+        return "redirect:/bierpong";
     }
     
 }
