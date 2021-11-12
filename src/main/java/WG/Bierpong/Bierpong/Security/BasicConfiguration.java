@@ -34,6 +34,10 @@ public class BasicConfiguration extends WebSecurityConfigurerAdapter {
           .anyRequest()
           .authenticated()
           .and()
-          .httpBasic();
+          .formLogin()
+          .loginPage("/login")
+          .permitAll();
     }
+
+
 }      
